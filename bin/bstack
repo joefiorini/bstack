@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+[ -d "$BS_HOME" ] || BS_HOME=/usr/local/Cellar/bstack/0.1
+BS_JARPATH=$BS_HOME/libexec/BrowserStackTunnel.jar
+
+PORT=$1
+
+if [ -f $HOME/.bstack ]; then
+  source ~/.bstack
+fi
+
+[ "$PORT" ] || PORT=3000
+
+java -jar $BS_JARPATH $BS_KEY localhost,$PORT,0
